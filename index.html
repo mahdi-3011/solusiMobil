@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solusi Permasalahan Mesin Mobil</title>
+    
+    <!-- Menggunakan Google Font: Poppins untuk tampilan modern dan profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Menggunakan Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === VARIABEL WARNA (Skema Otomotif: Biru Gelap, Abu-abu, Putih) === */
+        :root {
+            --primary-dark: #0f172a; /* Biru sangat gelap */
+            --primary-blue: #1e3a8a; /* Biru otomotif */
+            --accent-blue: #3b82f6; /* Biru terang untuk interaksi */
+            --text-dark: #334155; /* Abu-abu gelap untuk teks */
+            --text-light: #94a3b8; /* Abu-abu terang */
+            --bg-color: #f8fafc; /* Latar belakang halaman */
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Efek scroll halus untuk navigasi */
+        }
+
+        /* === HEADER & NAVBAR === */
+        header {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1486262715619-6708146b4524?auto=format&fit=crop&w=1600&q=80') center/cover;
+            color: var(--white);
+            padding: 4rem 1rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Navigasi */
+        nav {
+            background-color: var(--white);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* === SEARCH BAR === */
+        .search-section {
+            max-width: 600px;
+            margin: -1.5rem auto 2rem auto;
+            position: relative;
+            z-index: 10;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .search-box i {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 0.8rem;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* === MAIN CONTENT & GRID (CARD-BASED DESIGN) === */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Diperkecil batas amannya untuk mobile */
+            gap: 1.5rem; /* Jarak antar kartu sedikit dirapatkan */
+        }
+
+        /* Styling untuk Card Komponen */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+            border-top: 5px solid var(--primary-blue);
+        }
+
+        /* Efek Hover pada Card */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Delay animasi untuk tiap card agar muncul bergantian */
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.3s; }
+        .card:nth-child(3) { animation-delay: 0.5s; }
+        .card:nth-child(4) { animation-delay: 0.7s; }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            background-color: var(--bg-color);
+            color: var(--primary-blue);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Styling List Gejala dan Penyebab */
+        .info-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-group h4 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-group ul {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+
+        .info-group ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Ikon custom untuk list item */
+        .info-group.gejala ul li::before {
+            content: "\f071"; /* FontAwesome exclamation-triangle */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #f59e0b; /* Warna peringatan (kuning/orange) */
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        .info-group.penyebab ul li::before {
+            content: "\f057"; /* FontAwesome circle-xmark */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #ef4444; /* Warna merah */
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        /* === ACCORDION (TOMBOL DETAIL SOLUSI) === */
+        .btn-detail {
+            width: 100%;
+            background-color: var(--bg-color);
+            color: var(--primary-blue);
+            border: 1px solid #cbd5e1;
+            padding: 0.8rem;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .btn-detail:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .solusi-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .solusi-inner {
+            padding: 1.5rem;
+        }
+
+        .solusi-inner h4 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .solusi-inner ol {
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .solusi-inner ol li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pesan jika pencarian tidak ditemukan */
+        .no-result {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* === BACK TO TOP BUTTON === */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-blue);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            display: none; /* Disembunyikan secara default */
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        #backToTop:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .creator-name {
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        /* === ANIMASI === */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            header { padding: 3rem 1rem 3rem 1rem; }
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            
+            .search-section { margin-top: -2rem; }
+            
+            nav { gap: 0.5rem; padding: 0.8rem; justify-content: center; }
+            nav a { font-size: 0.85rem; padding: 0.5rem 0.8rem; }
+            
+            .card-header { 
+                padding: 1.2rem; 
+                flex-direction: column; /* Mengubah ikon ke atas judul */
+                text-align: center; 
+                gap: 0.5rem; 
+            }
+            .card-title { font-size: 1.15rem; }
+            .card-body { padding: 1.2rem; }
+            
+            #backToTop { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            header p { font-size: 0.85rem; margin-bottom: 1rem; }
+            
+            .search-box { padding: 0.4rem 1rem; }
+            .search-box input { font-size: 0.9rem; padding: 0.6rem; }
+            
+            nav a { 
+                width: calc(50% - 0.5rem); /* Membuat menu menjadi 2 kolom di HP untuk kemudahan tap */
+                text-align: center; 
+                font-size: 0.8rem; 
+            }
+            
+            .grid-container { grid-template-columns: 1fr; } /* Paksa 1 kolom penuh di layar HP kecil */
+            
+            .info-group h4 { font-size: 0.95rem; }
+            .info-group ul li { font-size: 0.85rem; padding-left: 1.2rem; }
+            
+            .btn-detail { font-size: 0.85rem; padding: 0.7rem; }
+            .solusi-inner { padding: 1rem; }
+            .solusi-inner h4 { font-size: 0.95rem; }
+            .solusi-inner ol { font-size: 0.85rem; padding-left: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header id="beranda">
+        <h1>Solusi Permasalahan Mesin Mobil</h1>
+        <p>Panduan Diagnosa dan Perbaikan Komponen Utama</p>
+    </header>
+
+    <!-- SEARCH BAR SECTION -->
+    <div class="search-section">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Cari komponen (Contoh: Starter, Fan Belt)...">
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="#fan-belt"><i class="fas fa-bacon"></i> Fan Belt</a>
+        <a href="#power-steering"><i class="fas fa-dharmachakra"></i> Power Steering</a>
+        <a href="#motor-starter"><i class="fas fa-bolt"></i> Motor Starter</a>
+        <a href="#solenoid"><i class="fas fa-plug"></i> Solenoid</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="grid-container" id="cardsContainer">
+            
+            <!-- A. Card Fan Belt -->
+            <article class="card" id="fan-belt">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-bacon"></i></div>
+                    <h2 class="card-title">Fan Belt / Alternator Belt</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Fan belt adalah sabuk penghubung antara mesin dan komponen seperti alternator, water pump, dan AC.</p>
+                    
+                    <div class="info-group gejala">
+                        <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
+                        <ul>
+                            <li>Bunyi berdecit saat mesin menyala</li>
+                            <li>Mesin mengalami overheat</li>
+                            <li>Aki cepat tekor (karena alternator tidak maksimal)</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-group penyebab">
+                        <h4><i class="fas fa-magnifying-glass"></i> Penyebab</h4>
+                        <ul>
+                            <li>Belt sudah aus, getas, atau retak</li>
+                            <li>Tegangan belt tidak sesuai (terlalu kendur/kencang)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tombol Interaktif Accordion -->
+                    <button class="btn-detail">Lihat Solusi <i class="fas fa-chevron-down"></i></button>
+                    
+                    <!-- Konten Solusi yang tersembunyi -->
+                    <div class="solusi-content">
+                        <div class="solusi-inner">
+                            <h4>Langkah Perbaikan:</h4>
+                            <ol>
+                                <li>Matikan mesin dan pastikan kunci kontak di posisi OFF.</li>
+                                <li>Periksa kondisi fisik belt (cari tanda retak atau putus).</li>
+                                <li>Cek kekencangan dengan menekan bagian tengah belt.</li>
+                                <li>Setel ketegangan atau ganti dengan belt baru jika sudah rusak parah.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- B. Card Power Steering Pump -->
+            <article class="card" id="power-steering">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-dharmachakra"></i></div>
+                    <h2 class="card-title">Power Steering Pump</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Pompa hidrolik yang berfungsi membantu meringankan putaran setir pengemudi saat berkendara.</p>
+                    
+                    <div class="info-group gejala">
+                        <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
+                        <ul>
+                            <li>Setir terasa sangat berat saat diputar</li>
+                            <li>Terdengar bunyi dengung saat membelokkan setir</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-group penyebab">
+                        <h4><i class="fas fa-magnifying-glass"></i> Penyebab</h4>
+                        <ul>
+                            <li>Oli power steering kurang/habis</li>
+                            <li>Komponen pompa rusak atau aus</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-detail">Lihat Solusi <i class="fas fa-chevron-down"></i></button>
+                    <div class="solusi-content">
+                        <div class="solusi-inner">
+                            <h4>Langkah Perbaikan:</h4>
+                            <ol>
+                                <li>Cek level oli pada tabung reservoir power steering.</li>
+                                <li>Tambah oli khusus power steering jika kurang.</li>
+                                <li>Periksa seluruh jalur selang dari indikasi kebocoran.</li>
+                                <li>Ganti pompa power steering jika kerusakan ada di bagian dalam pompa.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- C. Card Motor Starter -->
+            <article class="card" id="motor-starter">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                    <h2 class="card-title">Motor Starter</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Motor listrik berdaya besar yang digunakan untuk memutar poros engkol dan menghidupkan mesin pertama kali.</p>
+                    
+                    <div class="info-group gejala">
+                        <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
+                        <ul>
+                            <li>Mesin sama sekali tidak bisa distart</li>
+                            <li>Hanya terdengar bunyi "klik-klik" atau putaran lambat</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-group penyebab">
+                        <h4><i class="fas fa-magnifying-glass"></i> Penyebab</h4>
+                        <ul>
+                            <li>Kapasitas Aki (Baterai) lemah/soak</li>
+                            <li>Brush (Sikat karbon) di dalam motor aus</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-detail">Lihat Solusi <i class="fas fa-chevron-down"></i></button>
+                    <div class="solusi-content">
+                        <div class="solusi-inner">
+                            <h4>Langkah Perbaikan:</h4>
+                            <ol>
+                                <li>Cek tegangan aki menggunakan multimeter (normal: ~12.4V).</li>
+                                <li>Periksa kekencangan dan kebersihan terminal aki.</li>
+                                <li>Bongkar unit motor starter jika aki normal.</li>
+                                <li>Bersihkan komutator dan ganti brush (sikat karbon) jika sudah pendek.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- D. Card Solenoid Starter -->
+            <article class="card" id="solenoid">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-plug"></i></div>
+                    <h2 class="card-title">Solenoid Starter</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Saklar elektromagnetik penarik pinion gear sekaligus penghubung arus listrik utama ke motor starter.</p>
+                    
+                    <div class="info-group gejala">
+                        <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
+                        <ul>
+                            <li>Terdengar bunyi klik keras saat kunci diputar, tapi starter tidak berputar</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-group penyebab">
+                        <h4><i class="fas fa-magnifying-glass"></i> Penyebab</h4>
+                        <ul>
+                            <li>Plat kontak (contact plate) di dalam solenoid terbakar/kotor</li>
+                            <li>Gulungan kawat pull-in coil terputus</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-detail">Lihat Solusi <i class="fas fa-chevron-down"></i></button>
+                    <div class="solusi-content">
+                        <div class="solusi-inner">
+                            <h4>Langkah Perbaikan:</h4>
+                            <ol>
+                                <li>Cek tegangan yang masuk ke terminal 50 pada solenoid.</li>
+                                <li>Periksa jalur kabel dari kunci kontak.</li>
+                                <li>Buka bagian belakang solenoid dan bersihkan plat kontak jika kotor/terbakar.</li>
+                                <li>Ganti satu set (assembly) solenoid jika perbaikan tidak memungkinkan.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Pesan jika hasil pencarian kosong -->
+            <div id="noResultMsg" class="no-result">
+                <i class="fas fa-box-open fa-2x" style="margin-bottom: 1rem; color: #cbd5e1;"></i><br>
+                Komponen yang Anda cari tidak ditemukan.
+            </div>
+
+        </div>
+    </main>
+
+    <!-- TOMBOL BACK TO TOP -->
+    <button id="backToTop" title="Kembali ke Atas">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2023 Media Pembelajaran Otomotif</p>
+        <!-- Nama pembuat dikosongkan agar dapat diedit -->
+        <p>Dikembangkan oleh: <span class="creator-name">[ Nama Anda / Kelompok Anda ]</span></p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. FITUR PENCARIAN (Live Search)
+            const searchInput = document.getElementById('searchInput');
+            const cards = document.querySelectorAll('.card');
+            const noResultMsg = document.getElementById('noResultMsg');
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                let hasResult = false;
+
+                cards.forEach(card => {
+                    // Mengambil teks dari judul dan deskripsi untuk dicari
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.card-description').textContent.toLowerCase();
+
+                    // Jika cocok, tampilkan card, jika tidak sembunyikan
+                    if (title.includes(query) || desc.includes(query)) {
+                        card.style.display = 'block';
+                        hasResult = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Tampilkan pesan "tidak ditemukan" jika tidak ada card yang cocok
+                if (hasResult) {
+                    noResultMsg.style.display = 'none';
+                } else {
+                    noResultMsg.style.display = 'block';
+                }
+            });
+
+            // 2. FITUR ACCORDION (Tampilkan/Sembunyikan Solusi)
+            const detailButtons = document.querySelectorAll('.btn-detail');
+
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Mengambil elemen konten solusi yang berada persis setelah tombol
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+
+                    // Toggle animasi max-height
+                    if (content.style.maxHeight) {
+                        // Jika terbuka, maka tutup
+                        content.style.maxHeight = null;
+                        this.innerHTML = 'Lihat Solusi <i class="fas fa-chevron-down"></i>';
+                        this.style.backgroundColor = '';
+                        this.style.color = '';
+                    } else {
+                        // Jika tertutup, buka (hitung tinggi aktual dari isi kontennya)
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        this.innerHTML = 'Tutup Solusi <i class="fas fa-chevron-up"></i>';
+                        
+                        // Opsional: ubah warna tombol agar terlihat aktif
+                        this.style.backgroundColor = '#1e3a8a';
+                        this.style.color = '#ffffff';
+                    }
+                });
+            });
+
+            // 3. FITUR BACK TO TOP
+            const backToTopBtn = document.getElementById('backToTop');
+
+            // Munculkan tombol saat scroll turun lebih dari 300px
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            // Kembali ke atas saat tombol diklik
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
