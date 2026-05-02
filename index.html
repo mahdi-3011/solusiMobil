@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solusi Permasalahan Pada Mesin Mobil</title>
-    
+
     <!-- Menggunakan Google Font: Poppins untuk tampilan modern dan profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Menggunakan Font Awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* === VARIABEL WARNA (Skema Otomotif: Biru Gelap, Abu-abu, Putih) === */
         :root {
-            --primary-dark: #0f172a; /* Biru sangat gelap */
-            --primary-blue: #1e3a8a; /* Biru otomotif */
-            --accent-blue: #3b82f6; /* Biru terang untuk interaksi */
-            --text-dark: #334155; /* Abu-abu gelap untuk teks */
-            --text-light: #94a3b8; /* Abu-abu terang */
-            --bg-color: #f8fafc; /* Latar belakang halaman */
+            --primary-dark: #0f172a;
+            /* Biru sangat gelap */
+            --primary-blue: #1e3a8a;
+            /* Biru otomotif */
+            --accent-blue: #3b82f6;
+            /* Biru terang untuk interaksi */
+            --text-dark: #334155;
+            /* Abu-abu gelap untuk teks */
+            --text-light: #94a3b8;
+            /* Abu-abu terang */
+            --bg-color: #f8fafc;
+            /* Latar belakang halaman */
             --white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
 
@@ -39,7 +47,8 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Efek scroll halus untuk navigasi */
+            scroll-behavior: smooth;
+            /* Efek scroll halus untuk navigasi */
         }
 
         /* === HEADER & NAVBAR === */
@@ -137,8 +146,10 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Diperkecil batas amannya untuk mobile */
-            gap: 1.5rem; /* Jarak antar kartu sedikit dirapatkan */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Diperkecil batas amannya untuk mobile */
+            gap: 1.5rem;
+            /* Jarak antar kartu sedikit dirapatkan */
         }
 
         /* Styling untuk Card Komponen */
@@ -161,10 +172,21 @@
         }
 
         /* Delay animasi untuk tiap card agar muncul bergantian */
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.3s; }
-        .card:nth-child(3) { animation-delay: 0.5s; }
-        .card:nth-child(4) { animation-delay: 0.7s; }
+        .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.7s;
+        }
 
         .card-header {
             padding: 1.5rem;
@@ -230,23 +252,27 @@
 
         /* Ikon custom untuk list item */
         .info-group.gejala ul li::before {
-            content: "\f071"; /* FontAwesome exclamation-triangle */
+            content: "\f071";
+            /* FontAwesome exclamation-triangle */
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
             left: 0;
-            color: #f59e0b; /* Warna peringatan (kuning/orange) */
+            color: #f59e0b;
+            /* Warna peringatan (kuning/orange) */
             font-size: 0.8rem;
             top: 2px;
         }
 
         .info-group.penyebab ul li::before {
-            content: "\f057"; /* FontAwesome circle-xmark */
+            content: "\f057";
+            /* FontAwesome circle-xmark */
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
             left: 0;
-            color: #ef4444; /* Warna merah */
+            color: #ef4444;
+            /* Warna merah */
             font-size: 0.8rem;
             top: 2px;
         }
@@ -328,7 +354,8 @@
             font-size: 1.2rem;
             cursor: pointer;
             box-shadow: var(--shadow-lg);
-            display: none; /* Disembunyikan secara default */
+            display: none;
+            /* Disembunyikan secara default */
             align-items: center;
             justify-content: center;
             transition: var(--transition);
@@ -362,73 +389,158 @@
 
         /* === ANIMASI === */
         @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* === RESPONSIVE DESIGN === */
-        @media (max-width: 768px) {
-            header { padding: 3rem 1rem 3rem 1rem; }
-            header h1 { font-size: 2rem; }
-            header p { font-size: 1rem; }
-            
-            .search-section { margin-top: -2rem; }
-            
-            nav { gap: 0.5rem; padding: 0.8rem; justify-content: center; }
-            nav a { font-size: 0.85rem; padding: 0.5rem 0.8rem; }
-            
-            .card-header { 
-                padding: 1.2rem; 
-                flex-direction: column; /* Mengubah ikon ke atas judul */
-                text-align: center; 
-                gap: 0.5rem; 
-            }
-            .card-title { font-size: 1.15rem; }
-            .card-body { padding: 1.2rem; }
-            
-            #backToTop { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1rem; }
+        @media (max-width: 768px) { header {
+            padding: 3rem 1rem 3rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        header p {
+            font-size: 1rem;
+        }
+
+        .search-section {
+            margin-top: -2rem;
+        }
+
+        nav {
+            gap: 0.5rem;
+            padding: 0.8rem;
+            justify-content: center;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            padding: 0.5rem 0.8rem;
+        }
+
+        .card-header {
+            padding: 1.2rem;
+            flex-direction: column;
+            /* Mengubah ikon ke atas judul */
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+        }
+
+        #backToTop {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            font-size: 1rem;
+        }
         }
 
         @media (max-width: 480px) {
-            header h1 { font-size: 1.5rem; }
-            header p { font-size: 0.85rem; margin-bottom: 1rem; }
-            
-            .search-box { padding: 0.4rem 1rem; }
-            .search-box input { font-size: 0.9rem; padding: 0.6rem; }
-            
-            nav a { 
-                width: calc(50% - 0.5rem); /* Membuat menu menjadi 2 kolom di HP untuk kemudahan tap */
-                text-align: center; 
-                font-size: 0.8rem; 
+            header h1 {
+                font-size: 1.5rem;
             }
-            
-            .grid-container { grid-template-columns: 1fr; } /* Paksa 1 kolom penuh di layar HP kecil */
-            
-            .info-group h4 { font-size: 0.95rem; }
-            .info-group ul li { font-size: 0.85rem; padding-left: 1.2rem; }
-            
-            .btn-detail { font-size: 0.85rem; padding: 0.7rem; }
-            .solusi-inner { padding: 1rem; }
-            .solusi-inner h4 { font-size: 0.95rem; }
-            .solusi-inner ol { font-size: 0.85rem; padding-left: 1rem; }
+
+            header p {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+
+        .search-box {
+            padding: 0.4rem 1rem;
+        }
+
+        .search-box input {
+            font-size: 0.9rem;
+            padding: 0.6rem;
+        }
+
+        nav a {
+            width: calc(50% - 0.5rem);
+            /* Membuat menu menjadi 2 kolom di HP untuk kemudahan tap */
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .grid-container {
+            grid-template-columns: 1fr;
+        }
+
+        /* Paksa 1 kolom penuh di layar HP kecil */
+
+        .info-group h4 {
+            font-size: 0.95rem;
+        }
+
+        .info-group ul li {
+            font-size: 0.85rem;
+            padding-left: 1.2rem;
+        }
+
+        .btn-detail {
+            font-size: 0.85rem;
+            padding: 0.7rem;
+        }
+
+        .solusi-inner {
+            padding: 1rem;
+        }
+
+        .solusi-inner h4 {
+            font-size: 0.95rem;
+        }
+
+        .solusi-inner ol {
+            font-size: 0.85rem;
+            padding-left: 1rem;
+        }
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER SECTION -->
     <header id="beranda">
-        <h1>Solusi Permasalahan Mesin Mobil</h1>
+        <h1>Solusi Permasalahan Pada Mesin Mobil</h1>
         <p>Panduan Diagnosa dan Perbaikan Komponen Utama</p>
     </header>
 
@@ -451,7 +563,7 @@
     <!-- MAIN CONTENT -->
     <main>
         <div class="grid-container" id="cardsContainer">
-            
+
             <!-- A. Card Fan Belt -->
             <article class="card" id="fan-belt">
                 <div class="card-header">
@@ -459,8 +571,9 @@
                     <h2 class="card-title">Fan Belt / Alternator Belt</h2>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Fan belt adalah sabuk penghubung antara mesin dan komponen seperti alternator, water pump, dan AC.</p>
-                    
+                    <p class="card-description">Fan belt adalah sabuk penghubung antara mesin dan komponen seperti
+                        alternator, water pump, dan AC.</p>
+
                     <div class="info-group gejala">
                         <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
                         <ul>
@@ -480,7 +593,7 @@
 
                     <!-- Tombol Interaktif Accordion -->
                     <button class="btn-detail">Lihat Solusi <i class="fas fa-chevron-down"></i></button>
-                    
+
                     <!-- Konten Solusi yang tersembunyi -->
                     <div class="solusi-content">
                         <div class="solusi-inner">
@@ -503,8 +616,9 @@
                     <h2 class="card-title">Power Steering Pump</h2>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Pompa hidrolik yang berfungsi membantu meringankan putaran setir pengemudi saat berkendara.</p>
-                    
+                    <p class="card-description">Pompa hidrolik yang berfungsi membantu meringankan putaran setir
+                        pengemudi saat berkendara.</p>
+
                     <div class="info-group gejala">
                         <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
                         <ul>
@@ -543,8 +657,9 @@
                     <h2 class="card-title">Motor Starter</h2>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Motor listrik berdaya besar yang digunakan untuk memutar poros engkol dan menghidupkan mesin pertama kali.</p>
-                    
+                    <p class="card-description">Motor listrik berdaya besar yang digunakan untuk memutar poros engkol
+                        dan menghidupkan mesin pertama kali.</p>
+
                     <div class="info-group gejala">
                         <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
                         <ul>
@@ -583,8 +698,9 @@
                     <h2 class="card-title">Solenoid Starter</h2>
                 </div>
                 <div class="card-body">
-                    <p class="card-description">Saklar elektromagnetik penarik pinion gear sekaligus penghubung arus listrik utama ke motor starter.</p>
-                    
+                    <p class="card-description">Saklar elektromagnetik penarik pinion gear sekaligus penghubung arus
+                        listrik utama ke motor starter.</p>
+
                     <div class="info-group gejala">
                         <h4><i class="fas fa-triangle-exclamation"></i> Gejala</h4>
                         <ul>
@@ -639,20 +755,21 @@
     <!-- JAVASCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // 1. FITUR PENCARIAN (Live Search)
             const searchInput = document.getElementById('searchInput');
             const cards = document.querySelectorAll('.card');
             const noResultMsg = document.getElementById('noResultMsg');
 
-            searchInput.addEventListener('input', function() {
+            searchInput.addEventListener('input', function () {
                 const query = this.value.toLowerCase().trim();
                 let hasResult = false;
 
                 cards.forEach(card => {
                     // Mengambil teks dari judul dan deskripsi untuk dicari
                     const title = card.querySelector('.card-title').textContent.toLowerCase();
-                    const desc = card.querySelector('.card-description').textContent.toLowerCase();
+                    const desc = card.querySelector('.card-description').textContent
+                        .toLowerCase();
 
                     // Jika cocok, tampilkan card, jika tidak sembunyikan
                     if (title.includes(query) || desc.includes(query)) {
@@ -675,7 +792,7 @@
             const detailButtons = document.querySelectorAll('.btn-detail');
 
             detailButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     // Mengambil elemen konten solusi yang berada persis setelah tombol
                     const content = this.nextElementSibling;
                     const icon = this.querySelector('i');
@@ -691,7 +808,7 @@
                         // Jika tertutup, buka (hitung tinggi aktual dari isi kontennya)
                         content.style.maxHeight = content.scrollHeight + "px";
                         this.innerHTML = 'Tutup Solusi <i class="fas fa-chevron-up"></i>';
-                        
+
                         // Opsional: ubah warna tombol agar terlihat aktif
                         this.style.backgroundColor = '#1e3a8a';
                         this.style.color = '#ffffff';
@@ -721,4 +838,5 @@
         });
     </script>
 </body>
+
 </html>
